@@ -29,7 +29,5 @@ public class Empresa extends AbstractEntity<Long>{
 
 	public void setProfissoes(List<Profissao> profissoes) {
 		this.profissoes = profissoes;
-	}
-	
+	}	
 }
-

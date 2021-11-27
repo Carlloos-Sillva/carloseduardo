@@ -11,38 +11,32 @@ import carloseduardo.domain.Profissao;
 
 @Service @Transactional(readOnly = false)
 public class ProfissaoServiceImpl implements ProfissaoService{
-
 	
 	@Autowired
 	private ProfissaoDao dao;
 	
 	@Override
 	public void salvar(Profissao profissao) {
-		dao.save(profissao);
-		
+		dao.save(profissao);	
 	}
 
 	@Override
 	public void editar(Profissao profissao) {
 		dao.update(profissao);
-		
 	}
 
 	@Override
 	public void excluir(Long id) {
 		dao.delete(id);
-		
 	}
 
 	@Override @Transactional(readOnly = true)
 	public Profissao buscarPorId(Long id) {
-		
 		return dao.findById(id);
 	}
 
 	@Override @Transactional(readOnly = true)
-	public List<Profissao> buscarTodos() {
-		
+	public List<Profissao> buscarTodos() {	
 		return dao.findAll();
 	}
 
@@ -50,8 +44,7 @@ public class ProfissaoServiceImpl implements ProfissaoService{
 	public boolean profissaoTemCliente(Long id) {
 		
 		if(buscarPorId(id).getClientes().isEmpty()) {
-			return false;
-		}
+			return false;}
 		
 		return true;
 	}	

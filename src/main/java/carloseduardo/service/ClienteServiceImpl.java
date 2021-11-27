@@ -18,32 +18,26 @@ public class ClienteServiceImpl implements ClienteService{
 	
 	@Override @Transactional(readOnly = false)
 	public void salvar(Cliente cliente) {
-		dao.save(cliente);
-		
+		dao.save(cliente);	
 	}
 
 	@Override @Transactional(readOnly = false)
 	public void editar(Cliente cliente) {
-		dao.update(cliente);
-		
+		dao.update(cliente);	
 	}
 
 	@Override @Transactional(readOnly = false)
 	public void excluir(Long id) {
-		dao.delete(id);
-		
+		dao.delete(id);	
 	}
 
 	@Override
 	public Cliente buscarPorId(Long id) {
-		
 		return dao.findById(id);
 	}
 
 	@Override
 	public List<Cliente> buscarTodos() {
-
 		return dao.findAll();
 	}
-
 }

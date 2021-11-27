@@ -31,15 +31,12 @@ public class ClienteController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Cliente cliente) {
-		
 		return "/cliente/cadastro";
 	}
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		
 		model.addAttribute("clientes", clienteService.buscarTodos());
-		
 		return"/cliente/lista";
 	}
 	
@@ -48,46 +45,36 @@ public class ClienteController {
 		
 		clienteService.salvar(cliente);
 		attr.addFlashAttribute("success", "Cliente cadastrado com sucesso.");
-		
 		return "redirect:/clientes/cadastrar";
 	}
 	
 	@ModelAttribute("profissoes")
 	public List<Profissao> getProfissoes(){
-		
 		return profissaoService.buscarTodos();
 	}
 	
 	@ModelAttribute("ufs")
 	public UF[] getUFs(){
-		
 		return UF.values();
 	}	
-	
-	
+
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-		
 		model.addAttribute("cliente", clienteService.buscarPorId(id));
-		
 		return "cliente/cadastro";
 	}
 		
 	@PostMapping("/editar")
-	public String editar(Cliente cliente, RedirectAttributes attr) {
-		
+	public String editar(Cliente cliente, RedirectAttributes attr) {	
 		clienteService.editar(cliente);
 		attr.addFlashAttribute("success", "Cliente alterado com sucesso.");
-		
 		return "redirect:/clientes/cadastrar";
 	}
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
-		
 		clienteService.excluir(id);
 		attr.addFlashAttribute("success", "Cliente excluído com sucesso.");
-		
 		return "redirect:/clientes/listar";
 	}
 }

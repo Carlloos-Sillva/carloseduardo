@@ -43,7 +43,7 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
 			return false;
 		return true;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "id = " + id;
